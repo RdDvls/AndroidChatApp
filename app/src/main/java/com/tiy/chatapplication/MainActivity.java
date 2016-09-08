@@ -65,44 +65,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //String testOutput ="Test string";
         try {
             Socket clientSocket = new Socket("10.0.0.133", 8005);
-            PrintWriter outFromServer = new PrintWriter(clientSocket.getOutputStream(), true);
+            PrintWriter outToServer = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader inputFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 //                System.out.println("Please enter your first name:");
 //                String name = inputScanner.nextLine();
            String messageItem = text.getText().toString();
-            outFromServer.println(messageItem);
+            outToServer.println(messageItem);
             String serverResponse = inputFromServer.readLine();
-            while (true) {
-                if (messageCounter == 0) {
-                    //System.out.println("Enter message:");
-                    //String message = inputScanner.nextLine();
-                    messageItem = text.getText().toString();
-                    outFromServer.println(messageItem);
-                    serverResponse = inputFromServer.readLine();
-                    messageCounter++;
-                } else {
-//                        System.out.println("Enter message:");
-//                        String message = inputScanner.nextLine();
-//                        outFromServer.println("test");
-//                        String serverResponse = inputFromServer.readLine();
-//                        System.out.println("Would you like to send another message? y/n");
-//                        String userResponse = inputScanner.nextLine();
-//                        messageCounter++;
-                    if (messageCounter > 200) {
-                        clientSocket.close();
-
-                        break;
-                    }
-
+//            while (true) {
+//                if (messageCounter == 0) {
+//                    //System.out.println("Enter message:");
+//                    //String message = inputScanner.nextLine();
+//                    messageItem = text.getText().toString();
+//                    outFromServer.println(messageItem);
+//                    serverResponse = inputFromServer.readLine();
+//                    messageCounter++;
+//                } else {
+////                        System.out.println("Enter message:");
+////                        String message = inputScanner.nextLine();
+////                        outFromServer.println("test");
+////                        String serverResponse = inputFromServer.readLine();
+////                        System.out.println("Would you like to send another message? y/n");
+////                        String userResponse = inputScanner.nextLine();
+////                        messageCounter++;
+//                    if (messageCounter > 200) {
+//                        clientSocket.close();
+//
+//                        break;
 //                    }
-                }
+//
+////                    }
+                }catch (IOException exception) {
 //            out.println("name= " + name);// sent to server; read by server
 //            String serverResponse = in.readLine();
             }
-        } catch (IOException exception) {
+        }
         }
 
-    }
 
-}
+
+
 
